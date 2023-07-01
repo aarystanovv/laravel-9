@@ -8,6 +8,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\Post\IndexController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,7 +24,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['namespace' => 'Post'], function (){
+Route::group(['namespace' => 'App\Http\Controllers\Post'], function (){
     Route::get('/posts', 'IndexController')->name('post.index');
     Route::get('/posts/create', 'CreateController')->name('post.create');
     Route::post('/posts', 'StoreController')->name('post.store');
@@ -34,9 +35,9 @@ Route::group(['namespace' => 'Post'], function (){
 });
 
 //Route::get('/posts', [PostController::class, 'index'])->name('post.index');
-//Route::get('/main', [MainController::class, 'index'])->name('main.index');
-//Route::get('/contacts', [ContactController::class, 'index'])->name('contact.index');
-//Route::get('/about', [AboutController::class, 'index'])->name('about.index');
+Route::get('/main', [MainController::class, 'index'])->name('main.index');
+Route::get('/contacts', [ContactController::class, 'index'])->name('contact.index');
+Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 //Route::get('/posts/create', [PostController::class, 'create'])->name('post.create');
 //Route::post('/posts', [PostController::class, 'store'])->name('post.store');
 //Route::get('/posts/{post}', [PostController::class, 'show'])->name('post.show');
